@@ -18,7 +18,6 @@ function getBooksBorrowedCount(books) {
       return totalBooksBorrowed;
     });
   });
-  console.log(totalBooksBorrowed);
   return totalBooksBorrowed;
 }
 
@@ -35,7 +34,6 @@ function getMostCommonGenres(books) {
       });
     }
   });
-  console.log(results);
   results.sort((a, b) => b.count - a.count);
   if (results.length > 5) {
     return results.slice(0, 5);
@@ -56,17 +54,7 @@ function getMostPopularBooks(books) {
   });
   return results.slice(0, 5);
 }
-//     } else {
 
-//     }
-//   });
-//   console.log(results);
-//   results.sort((a, b) => b.count - a.count);
-//   if (results.length > 5) {
-//     return results.slice(0, 5);
-//   }
-//   return results;
-// }
 
 function getMostPopularAuthors(books, authors) {
   let popBooks = getMostPopularBooks(books);

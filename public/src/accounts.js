@@ -12,12 +12,12 @@ function sortAccountsByLastName(accounts) {
 
 function getTotalNumberOfBorrows(account, books) {
   let total = 0;
-  books.forEach((book) => {
+  total = books.reduce((acc, book) => {
     if (book.borrows.some((borrowList) => borrowList.id.includes(account.id))) {
-      total++;
+      acc++;
     }
-    return total;
-  });
+    return acc;
+  }, []);
   return total;
 }
 
@@ -32,18 +32,13 @@ function getBooksPossessedByAccount(account, books, authors) {
       booksBorrowed.push(book);
     }
   });
-  console.log(booksBorrowed);
 
   booksBorrowed.forEach((book) => {
     let authorMatch = authors.find((author) => author.id === book.authorId);
-    console.log(authorMatch);
     book["author"] = authorMatch;
   });
   return booksBorrowed;
 }
-
-//  return an array with the books borrowed by an account
-// embedd author of the book within object after book
 
 module.exports = {
   findAccountById,
